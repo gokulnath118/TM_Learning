@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager</title>
+</head>
+<body>
+    <h1>Task Manager</h1>
+    <p id="tasks"></p>
+    <p id="summary"></p>
+
+    <script>
+        // Sample task array
+        const tasks = [
+            { name: "Submit report", isCompleted: false, dueDate: "2024-03-10" },
+            { name: "Code review", isCompleted: true, dueDate: "2024-03-08" },
+            { name: "Update documentation", isCompleted: false, dueDate: "2024-03-12" },
+            { name: "Fix UI bug", isCompleted: true, dueDate: "2024-03-05" }
+        ];
+
+        // Named function: Filter only incomplete tasks
+        function getIncompleteTasks(taskList) {
+            return taskList.filter(task => !task.isCompleted);
+        }
+
+        // Anonymous function: Transform task names with a prefix if overdue
+        const today = new Date().toISOString().split("T")[0];
+        tasks.forEach(function(task) {
+            if (task.dueDate < today) {
+                task.name = `[Overdue] ${task.name}`;
+            }
+        });
+
+        // Arrow function: Count total tasks
+        const totalTasks = () => tasks.length;
+
+        // Arrow function: Count completed tasks
+        const completedTasksCount = () => tasks.filter(task => task.isCompleted).length;
+
+        // Display results
+        document.getElementById("tasks").innerText = 
+            "Incomplete Tasks: " + JSON.stringify(getIncompleteTasks(tasks), null, 2);
+        document.getElementById("summary").innerText = 
+            `Total Tasks: ${totalTasks()} | Completed Tasks: ${completedTasksCount()}`;
+    </script>
+</body>
+</html>
