@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+body {
+    font-family: 'Bebas Neue';
+    background-color: aqua;
+    color: white;
+    text-align: center;
+}
+
+header {
+    background-color: darkblue;
+    color: #ffffff;
+}
+
+main {
+    background-color: darkblue;
+}
+
+h2 {
+    color: grey;
+}
+
+footer {
+    background-color:red;
+    color: white;
+}
+a{
+    color:red;
+}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PromoBanner</title>
+    <style>
+        #promoBanner {
+            background-color: cornsilk;
+            color: darkorange;
+            padding: 15px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div id="promoBanner">Promotional Text</div>
+    <script>
+        const promoBanner = document.getElementById("promoBanner");
+
+        let promoMessage = "Welcome to our Page.";
+        let discountPercent = 50;
+        let isUserLoggedIn = true;
+        let preferredLanguage ="en";
+
+        if (isUserLoggedIn) {
+            promoMessage = `Hello! Don't Miss.... Grab ${discountPercent}% off on all Products`;
+        }
+
+        promoBanner.textContent = promoMessage;
+
+        console.log(typeof promoMessage, promoMessage);
+        console.log(typeof discountPercent, discountPercent);
+        console.log(typeof isUserLoggedIn, isUserLoggedIn);
+        console.log(typeof preferredLanguage, preferredLanguage);
+    </script>
+</body>
+</html>

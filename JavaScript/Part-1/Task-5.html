@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String Methods</title>
+    <style>
+        h1{
+            text-align: center;
+            margin: 0px 0px;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>String Methods (trim, length, toUpperCase, toLowerCase)</h1>
+
+    <label for="userInput">Enter your text:</label>
+    <input type="text" id="userInput" placeholder="Enter anything">
+    <button onclick="stringMethods()">Convert</button>
+    <p id="result"></p>
+    <script>
+        function stringMethods(){
+            let text=document.getElementById('userInput').value;
+            var res=text.trim();
+            let n=res.length;
+            if(n==0){
+                alert('Enter a Message');
+            }
+            else if(n<10){
+                document.getElementById('result').innerText=res.toUpperCase();
+            }
+            else{
+                document.getElementById('result').innerText=res.toLowerCase();
+            }
+        }
+    </script>
+</body>
+</html>

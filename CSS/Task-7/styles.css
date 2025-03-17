@@ -1,0 +1,21 @@
+body{
+    padding-top: 250px;
+    text-align: center;
+}
+.button{
+    text-align: center;
+    background-color: blueviolet;
+    color: aliceblue;
+    align-items: center;
+    font-size: 2cm;
+    padding: 10px 20px;
+    animation: pulse 2s infinite;
+}
+.button:hover{
+    background-color: yellowgreen;
+}
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}

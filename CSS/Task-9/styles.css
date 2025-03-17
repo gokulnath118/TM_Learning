@@ -1,0 +1,19 @@
+:root {
+    --main-bg-color: white;
+    --main-text-color: black;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --main-bg-color: black;
+        --main-text-color: white;
+    }
+}
+
+body{
+    background-color: var(--main-bg-color);
+    color: var(--main-text-color);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding-top: 250px;
+    text-align: center;
+}

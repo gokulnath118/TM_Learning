@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library</title>
+    <style>
+        h1{
+            background-color: cornsilk;
+            color:chocolate;
+            text-align: center;
+            font-weight: bold;
+            margin-top: 0px;
+            padding-bottom: 1px;
+            margin-bottom: 0px;
+        }
+        header{
+            background-color: cornsilk;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 0px;
+        }
+        input{
+            font-size: 18px;
+            font-weight: bold;
+            background-color: cornsilk;
+            margin: 2px solid brown;
+            color: crimson
+        }
+        button{
+            background-color: darkorange;
+            font-size: 18px;
+        }
+        #result{
+            margin-top: 0px;
+            align-items: center;
+            text-align: center;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Library</h1>
+    <header>
+        <input type="text" id="BookName" placeholder="Enter Book Name">
+        <button onclick="CheckoutBook()">Search</button>
+    </header>
+    <p id="result"></p>
+    <script>
+        class Book {
+            constructor(title, author, isAvailable = true) {
+                this.title = title;
+                this.author = author;
+                this.isAvailable = isAvailable;
+            }
+        }
+
+        const books = [
+            new Book("Harry Potter", "J. K. Rowling"),
+            new Book("Akata Witch", "Nnedi Okorafor", false),
+            new Book("The Da Vinci Code", "Dan Brown"),
+            new Book("The Lord of the Rings", "J.R.R. Tolkien", false)
+        ];
+
+        function CheckoutBook() {
+            let bookName = document.getElementById("BookName").value.trim();
+            let book = books.find(b => b.title.toLowerCase() === bookName.toLowerCase());
+            // console.log(book)
+            if (book) {
+                if (book.isAvailable) {
+                    book.isAvailable = false;
+                    document.getElementById("result").innerText = `You have checked out "${book.title}".`;
+                    document.getElementById("result").style.color='green'
+
+                } else {
+                    document.getElementById("result").innerText = `Sorry, "${book.title}" is not available.`;
+                    document.getElementById("result").style.color='red'
+                }
+            } else {
+                document.getElementById("result").innerText = `Sorry, "${bookName}" is not available.`;
+                document.getElementById("result").style.color='red'
+            }
+        }
+    </script>
+</body>
+</html>

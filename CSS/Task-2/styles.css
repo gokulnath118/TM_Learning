@@ -1,0 +1,14 @@
+.product-card {
+    border: 2px solid #000;
+    background-color: pink;
+    padding: 20px;
+    margin: 20px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    color: #333;
+    font-size: 1.2rem;
+}
+
+.product-card button{
+    background-color:cyan;
+}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Verification</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: rgb(208, 208, 208);
+        }
+        #result {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h2>Age Validation Form</h2>
+    <label for="userAge">Enter Your Age:</label>
+    <input type="number" id="userAge" placeholder="Enter your age">
+    <button onclick="checkAge()">Submit</button>
+    <p id="result"></p>
+
+    <script>
+        function checkAge() {
+            let age = document.getElementById("userAge").value;
+            //chek age box is empty or in negatives
+            if (isNaN(age) || age <= 0) {
+                document.getElementById("result").textContent = "Invalid age! Please enter a valid number.";
+                document.getElementById("result").style.color = "red";
+                return;
+            }
+            //check minor or major
+            if (age >= 18){
+                document.getElementById("result").textContent = "Access: Adult";
+                document.getElementById("result").style.color = "green";
+                // Log to console
+                console.log(`User Age: ${age}`);
+                console.log("Access: Adult");
+            }
+            else{
+                document.getElementById("result").textContent = "Access: Minor";
+                document.getElementById("result").style.color = "green";
+                // Log to console
+                console.log(`User Age: ${age}`);
+                console.log("Access: Minor");
+            }     
+        }
+    </script>
+</body>
+</html>

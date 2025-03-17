@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <style>
+        h1,p{
+            text-align: center;
+            background-color: purple;
+            color: white;
+            text-shadow: 0.5cm;
+            margin-bottom: 0;
+            margin-top: 0;
+        }
+        #itemPrices,#TotalCost,#shipping,#finalAmnt{
+            background-color: violet;
+            color: azure;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: 6mm;
+            text-align: center;
+            margin-top: 0;
+        }    
+        </style>
+</head>
+<body>
+    <h1>Cart Value</h1>
+    <div id="itemPrices"></div>
+    <div id="TotalCost"></div>
+    <div id="shipping"></div>
+    <div id="finalAmnt"></div>
+    <p>Thank you...Visit again</p>
+    <script>
+        let itemPrices = [19.99, 9.99, 4.99];
+        let totalCost = 0;
+        for (let i = 0; i < itemPrices.length; i++) {
+            totalCost += itemPrices[i]; 
+        }
+        let freeShippingThreshold = 30;
+        let shippingCost = totalCost >= freeShippingThreshold ? 0 : 5.99;
+        let finalAmount = totalCost + shippingCost;
+
+        document.getElementById('itemPrices').textContent=`ItemPrices: [${itemPrices}]`
+        document.getElementById('TotalCost').textContent=`TotalCost: ${totalCost}`
+        document.getElementById('shipping').textContent=`Shipping Charges: ${shippingCost}`
+        document.getElementById('finalAmnt').textContent=`Final Amount: ${finalAmount}`
+        console.log(`Total Cost: $${totalCost.toFixed(2)}`);
+        console.log(`Shipping Cost: $${shippingCost.toFixed(2)}`);
+        console.log(`Final Amount: $${finalAmount.toFixed(2)}`);
+    </script>
+</body>
+</html>
