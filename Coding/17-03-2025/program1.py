@@ -21,16 +21,16 @@
 # 8
 # Explanation
 # Using zero-based index notation, the correct answer is a[4]-a[6]=10-2=8. There is a greater difference between 10 and 1 but that would imply selling before buying, and short selling is not allowed in this problem.
-
-
-
+# 
+# # 7 1 8 4 2 10 3 2
+# 
 # Brute force
 def MaxLoss(arr):
     maxi=0
     for i in range(len(arr)):
         for j in range(i+1,len(arr)):
             if arr[i]>arr[j] and maxi<arr[i]-arr[j]:
-                maxi=abs(arr[j]-arr[i])
+                maxi=arr[j]-arr[i]
     return maxi
 arr=list(map(int,input("Enter the Stock Prices by day: ").split()))
 print(MaxLoss(arr))
@@ -39,7 +39,7 @@ print(MaxLoss(arr))
 def MaxLoss(arr):
     maximum_val = arr[0]
     ans = 0
-    for i in range(1,len(arr)):
+    for i in range(1,len(arr)): 
         if arr[i]>maximum_val:
             maximum_val = arr[i]
         else:

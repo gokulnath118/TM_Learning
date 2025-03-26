@@ -32,3 +32,47 @@ def kthFactor(num,k):
 num=int(input("Enter the number: "))
 k=int(input("Enter the value of K: "))
 print(kthFactor(num,k))  
+
+
+
+
+
+# in java
+
+# // program-1
+# public class Main {
+#     public static void main(String[] args) {
+#         int prices[]={1,8,4,2,9,10,3,2};
+#         int max_val=prices[0];
+#         int loss=0;
+#         for(int i=1; i<prices.length; i=i+1){
+#             if(prices[i]>max_val){
+#                 max_val=prices[i];
+#             }
+#             else{
+#                 if((max_val-prices[i])>loss){
+#                     loss=max_val-prices[i];
+#                 }
+#             }
+#         }
+#         System.out.println(loss);
+#     }
+# }
+
+# // program-2
+# public class Main {
+#     public static void main(String[] args) {
+#         int num=12;
+#         int k=3;
+#         int c=0;
+#         for(int i=num; i>=1; i=i-1){
+#             if (num%i==0){
+#                 c+=1;
+#                 if(k==c){
+#                     System.out.println(i);
+#                     break;
+#                 }
+#             }
+#         }
+#     }
+# }

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discount System</title>
+    <script>
+        function calculateDiscount() {
+            // User details (simulate user input)
+            const user = {
+                isLoggedIn: document.getElementById("isLoggedIn").checked, // Checkbox for login status
+                membershipLevel: document.getElementById("membershipLevel").value, // Dropdown for membership
+                couponCode: document.getElementById("couponCode").value.trim(), // Input for coupon
+            };
+
+            // Valid coupons
+            const validCoupons = ["DISCOUNT10", "DISCOUNT20", "WELCOME5"];
+
+            // Boolean logic to check conditions
+            const isCouponValid = validCoupons.includes(user.couponCode);
+            const isEligibleForGoldDiscount = user.isLoggedIn && user.membershipLevel === "Gold";
+            const isEligibleForPlatinumDiscount = user.isLoggedIn && user.membershipLevel === "Platinum";
+
+            // Ternary operator to set discount percentage
+            const discount = isEligibleForPlatinumDiscount
+                ? 30
+                : isEligibleForGoldDiscount
+                ? 20
+                : isCouponValid
+                ? 10
+                : 0;
+
+            // Handling special conditions
+            let message = "";
+            if (!user.isLoggedIn) {
+                message = "Please log in to avail discounts.";
+            } else if (!isCouponValid && user.couponCode !== "") {
+                message = "Invalid coupon code. Please try again.";
+            } else {
+                message = `You get a ${discount}% discount!`;
+            }
+
+            // Display result
+            document.getElementById("result").innerText = message;
+        }
+    </script>
+</head>
+<body>
+    <h2>Discount System</h2>
+    <label>
+        <input type="checkbox" id="isLoggedIn"> Logged In
+    </label>
+    <br><br>
+    
+    <label for="membershipLevel">Membership Level:</label>
+    <select id="membershipLevel">
+        <option value="Bronze">Bronze</option>
+        <option value="Silver">Silver</option>
+        <option value="Gold">Gold</option>
+        <option value="Platinum">Platinum</option>
+    </select>
+    <br><br>
+
+    <label for="couponCode">Coupon Code:</label>
+    <input type="text" id="couponCode" placeholder="Enter coupon (Optional)">
+    <br><br>
+
+    <button onclick="calculateDiscount()">Check Discount</button>
+    <p id="result"></p>
+</body>
+</html>
