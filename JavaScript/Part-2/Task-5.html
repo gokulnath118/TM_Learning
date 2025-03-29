@@ -16,18 +16,18 @@
             usersContainer.innerHTML = "Loading...";
 
             try {
-                // Fetch users
-                const usersResponse = await fetch("https://jsonplaceholder.typicode.com/users");
+                // Fetch users from Reqres API
+                const usersResponse = await fetch("https://reqres.in/api/users?page=1");
                 if (!usersResponse.ok) throw new Error("Failed to fetch users");
-                const users = await usersResponse.json();
+                const usersData = await usersResponse.json();
+                const users = usersData.data;
 
-                // Fetch posts for each user
+                // Fetch posts for each user from DummyJSON API
                 const userPromises = users.map(async (user) => {
-                    const postsResponse = await fetch(`https://jsonplaceholder.typicode.com/posts?userId=${user.id}`);
+                    const postsResponse = await fetch("https://dummyjson.com/posts?limit=5");
                     if (!postsResponse.ok) throw new Error(`Failed to fetch posts for user ${user.id}`);
-                    const posts = await postsResponse.json();
-                    
-                    return { ...user, posts };
+                    const postsData = await postsResponse.json();
+                    return { ...user, posts: postsData.posts };
                 });
 
                 const usersWithPosts = await Promise.all(userPromises);
@@ -37,10 +37,10 @@
                 usersWithPosts.forEach(user => {
                     const userDiv = document.createElement("div");
                     userDiv.classList.add("user-container");
-                    userDiv.innerHTML = `<p class="user-name">${user.name} (${user.email})</p>`;
+                    userDiv.innerHTML = `<p class="user-name">${user.first_name} ${user.last_name} (${user.email})</p>`;
 
                     const postList = document.createElement("ul");
-                    user.posts.slice(0, 5).forEach(post => {
+                    user.posts.forEach(post => {
                         const postItem = document.createElement("li");
                         postItem.textContent = post.title;
                         postList.appendChild(postItem);
@@ -49,7 +49,6 @@
                     userDiv.appendChild(postList);
                     usersContainer.appendChild(userDiv);
                 });
-
             } catch (error) {
                 usersContainer.innerHTML = `<p style="color: red;">Error: ${error.message}</p>`;
             }

@@ -4,6 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Discount System</title>
+</head>
+<body>
+    <h2>Discount System</h2>
+    <label>
+        <input type="checkbox" id="isLoggedIn"> Logged In
+    </label>
+    <br><br>
+    <label for="membershipLevel">Membership Level:</label>
+    <select id="membershipLevel">
+        <option value="Bronze">Bronze</option>
+        <option value="Silver">Silver</option>
+        <option value="Gold">Gold</option>
+        <option value="Platinum">Platinum</option>
+    </select>
+    <br><br>
+    <label for="couponCode">Coupon Code:</label>
+    <input type="text" id="couponCode" placeholder="Enter coupon (Optional)">
+    <br><br>
+    <button onclick="calculateDiscount()">Check Discount</button>
+    <p id="result"></p>
+
     <script>
         function calculateDiscount() {
             // User details (simulate user input)
@@ -34,9 +55,11 @@
             let message = "";
             if (!user.isLoggedIn) {
                 message = "Please log in to avail discounts.";
-            } else if (!isCouponValid && user.couponCode !== "") {
+            } 
+            else if (!isCouponValid && user.couponCode !== "") {
                 message = "Invalid coupon code. Please try again.";
-            } else {
+            } 
+            else {
                 message = `You get a ${discount}% discount!`;
             }
 
@@ -44,28 +67,5 @@
             document.getElementById("result").innerText = message;
         }
     </script>
-</head>
-<body>
-    <h2>Discount System</h2>
-    <label>
-        <input type="checkbox" id="isLoggedIn"> Logged In
-    </label>
-    <br><br>
-    
-    <label for="membershipLevel">Membership Level:</label>
-    <select id="membershipLevel">
-        <option value="Bronze">Bronze</option>
-        <option value="Silver">Silver</option>
-        <option value="Gold">Gold</option>
-        <option value="Platinum">Platinum</option>
-    </select>
-    <br><br>
-
-    <label for="couponCode">Coupon Code:</label>
-    <input type="text" id="couponCode" placeholder="Enter coupon (Optional)">
-    <br><br>
-
-    <button onclick="calculateDiscount()">Check Discount</button>
-    <p id="result"></p>
 </body>
 </html>
