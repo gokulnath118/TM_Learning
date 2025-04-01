@@ -1,7 +1,9 @@
 // 4) Geometry Tutor (OOP)
 
-abstract class Shape{
-    public abstract double getArea();
+class Shape{
+    public double getArea(){
+        return 0;
+    }
 }
 
 class Circle extends Shape{
